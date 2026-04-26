@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --pia-oxblood: #5b0100;
+  --pia-brass: #c9a050;
+  --pia-cream: #faf9f6;
+  --pia-vellum: #f2efe9;
+  --pia-ink: #121212;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--pia-cream);
+  color: var(--pia-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--pia-oxblood);
+  color: var(--pia-cream);
+}
+
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--pia-vellum); }
+::-webkit-scrollbar-thumb { background: var(--pia-ink); border: 2px solid var(--pia-vellum); }
+::-webkit-scrollbar-thumb:hover { background: var(--pia-oxblood); }
+
+/* ===== BLUEPRINT GRID ===== */
+.bg-blueprint {
+  background-color: var(--pia-vellum);
+  background-image:
+    linear-gradient(rgba(18, 18, 18, 0.07) 1px, transparent 1px),
+    linear-gradient(to right, rgba(18, 18, 18, 0.07) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ===== NEO-BRUTALIST SHADOWS ===== */
+.brut {
+  border: 2px solid var(--pia-ink);
+  box-shadow: 4px 4px 0 0 var(--pia-ink);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.brut-lg {
+  border: 2px solid var(--pia-ink);
+  box-shadow: 8px 8px 0 0 var(--pia-ink);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.brut:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 0 var(--pia-ink);
+}
+.brut-oxblood {
+  border: 2px solid var(--pia-ink);
+  box-shadow: 4px 4px 0 0 var(--pia-oxblood);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.brut-oxblood:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 0 var(--pia-oxblood);
+}
+
+/* ===== TICKET CUTOUT ===== */
+.ticket {
+  position: relative;
+  background: var(--pia-cream);
+  border: 2px solid var(--pia-ink);
+  box-shadow: 6px 6px 0 0 var(--pia-ink);
+}
+.ticket::before,
+.ticket::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: var(--pia-cream);
+  border: 2px solid var(--pia-ink);
+  border-radius: 9999px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.ticket::before { left: -16px; }
+.ticket::after  { right: -16px; }
+.ticket-divider {
+  border-left: 2px dashed var(--pia-ink);
+}
+
+/* ===== STAMP ===== */
+.stamp {
+  border: 3px double currentColor;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+/* ===== MARQUEE ===== */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  animation: marquee 40s linear infinite;
+  white-space: nowrap;
+}
+
+/* ===== GRAIN OVERLAY ===== */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+}
+
+/* ===== POLAROID ===== */
+.polaroid {
+  background: var(--pia-cream);
+  border: 2px solid var(--pia-ink);
+  padding: 12px 12px 38px 12px;
+  box-shadow: 6px 6px 0 0 var(--pia-ink);
+}
+
+/* ===== TAPE ===== */
+.tape {
+  position: absolute;
+  width: 80px;
+  height: 22px;
+  background: rgba(201, 160, 80, 0.8);
+  border: 1px solid rgba(18, 18, 18, 0.3);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ===== DECO UNDERLINE ===== */
+.deco-underline {
+  background-image: linear-gradient(var(--pia-brass), var(--pia-brass));
+  background-repeat: no-repeat;
+  background-size: 100% 8px;
+  background-position: 0 88%;
+}
+
+@layer base {
+  :root {
+    --background: 36 33% 97%;
+    --foreground: 0 0% 7%;
+    --card: 36 33% 97%;
+    --card-foreground: 0 0% 7%;
+    --popover: 36 33% 97%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 99% 18%;
+    --primary-foreground: 36 33% 97%;
+    --secondary: 38 49% 54%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 38 18% 93%;
+    --muted-foreground: 0 0% 25%;
+    --accent: 38 49% 54%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 99% 18%;
+    --destructive-foreground: 36 33% 97%;
+    --border: 0 0% 7%;
+    --input: 0 0% 7%;
+    --ring: 0 99% 18%;
+    --radius: 0;
+  }
+}
