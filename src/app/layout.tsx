@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   verification: {
-    google: "google-site-verification-token",
+    google: "a93d30998bdac59f",
   },
 };
 
